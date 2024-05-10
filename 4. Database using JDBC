@@ -1,0 +1,45 @@
+import java.sql.*; 
+public class JDBC  
+{ 
+ 
+ public static void main(String[] args)  
+ { 
+       String driver = "com.mysql.cj.jdbc.Driver"; 
+       String username = "root"; 
+       String password = "Avish@101"; 
+       String url = "jdbc:mysql://localhost:3306/my_database1"; 
+       try  
+       { 
+           Class.forName(driver); 
+           Connection con = DriverManager.getConnection(url,username, 
+password); 
+           String sql = "insert into Student values(39,'Avish','avi101@gmaill.com')"; 
+           String sql2 = "insert into Student 
+values(57,'Aniket','ani22@gmaill.com')"; 
+           Statement stmt = con.createStatement(); 
+           stmt.execute(sql); 
+           stmt.execute(sql2); 
+           System.out.print("Data inserted Successfully"); 
+            
+           String sql3="select * from Student"; 
+           ResultSet rs = stmt.executeQuery(sql3); 
+           while(rs.next()) 
+           { 
+            int roll = rs.getInt("Roll"); 
+            String name= rs.getString("StudName"); 
+            String em=rs.getString("Email"); 
+            System.out.println(); 
+            System.out.println("Roll no:"+roll); 
+            System.out.println("Name:"+name); 
+            System.out.println("Email:"+em); 
+            System.out.println(); 
+           } 
+           System.out.println("Data retrieved Successfully"); 
+       }  
+       catch (ClassNotFoundException | SQLException e)  
+       { 
+          e.printStackTrace(); 
+       } 
+            
+     } 
+} 
