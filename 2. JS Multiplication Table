@@ -1,0 +1,54 @@
+//EXP-2
+
+index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Multiplication Table Generator</title>
+<script src="script.js" defer></script>
+</head>
+<body>
+<h1>Multiplication Table Generator</h1>
+<label for="number">Enter a number:</label>
+<input type="number" id="number" placeholder="Enter a number">
+<button onclick="generateTableForLoop()">Generate Table (For
+Loop)</button>
+<button onclick="generateTableWhileLoop()">Generate Table (While
+Loop)</button>
+<h2>Generated Table:</h2>
+<pre id="tableResult"></pre>
+</body>
+</html>
+
+#script.js
+
+function generateTableForLoop() {
+let number = parseInt(document.getElementById('number').value);
+let result = '';
+if (isNaN(number) || number <= 0) {
+document.getElementById('tableResult').textContent = "Please enter a
+valid positive number.";
+return;
+}
+for (let i = 1; i <= 10; i++) {
+result += `${number} x ${i} = ${number * i}\n`;
+}
+document.getElementById('tableResult').textContent = result;
+}
+function generateTableWhileLoop() {
+let number = parseInt(document.getElementById('number').value);
+let result = '';
+let i = 1;
+if (isNaN(number) || number <= 0) {
+document.getElementById('tableResult').textContent = "Please enter a
+valid positive number.";
+return;
+}
+while (i <= 10) {
+result += `${number} x ${i} = ${number * i}\n`;
+i++;
+}
+document.getElementById('tableResult').textContent = result;
+}
