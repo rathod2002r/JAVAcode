@@ -1,0 +1,108 @@
+//EXP-6
+#index.html
+#Check If array Contain value.
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Check Array Element</title>
+<script src="script.js" defer></script>
+</head>
+<body>
+<h1>Check if Array Contains a Value</h1>
+<label for="arrayElements">Enter Array Elements (comma separated):</label>
+<input type="text" id="arrayElements" placeholder="e.g. 1, 2, 3, 4, 5">
+<br><br>
+<label for="checkElement">Enter Element to Check:</label>
+<input type="text" id="checkElement">
+<br><br>
+<button onclick="checkArrayElement()">Check Element</button>
+<p id="result"></p>
+</body>
+</html>
+
+
+#script.js
+function checkArrayElement() {
+let array = document.getElementById('arrayElements').value.split(',');
+let element = document.getElementById('checkElement').value;
+let index = array.indexOf(element);
+document.getElementById('result').textContent = index !== -1
+? `Element "${element}" found at index ${index}`
+: 'Element Not Found!';}
+
+
+
+2)
+#index.html
+#entity Array Manipulation.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Empty Array</title>
+<script src="script.js"></script>
+</head>
+<body>
+<h1>Array Manipulation</h1>
+<label for="arrayElements">Enter Array Elements (comma separated):
+</label>
+<input type="text" id="arrayElements" placeholder="e.g. 1, 2, 3, 4">
+<button onclick="emptyArrayElements()">Empty Array</button>
+<h2>Result:</h2>
+<p id="result"></p>
+</body>
+</html>
+
+#script.js
+function emptyArrayElements() {
+let input = document.getElementById("arrayElements").value;
+let arr = input.split(',').map(item => item.trim());
+arr.length = 0;
+document.getElementById("result").innerText = `Array is now: [${arr}]`;
+}
+
+
+
+3)
+#index.html
+#Remove Spacific Element from array.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Remove Array Element</title>
+<script src="script.js"></script>
+</head>
+<body>
+<h1>Remove Specific Element from Array</h1>
+<label for="arrayInput">Enter array elements (comma separated): </label>
+<input type="text" id="arrayInput" placeholder="e.g. 1, 2, 3,
+4"><br><br>
+<label for="elementInput">Enter element to remove: </label>
+<input type="text" id="elementInput"><br><br>
+<button onclick="removeArrayElement()">Remove Element</button>
+<p id="result"></p>
+</body>
+</html>
+
+
+#script.js
+
+function removeArrayElement() {
+const arrayInput = document.getElementById("arrayInput").value;
+const elementToRemove = document.getElementById("elementInput").value;
+let array = arrayInput.split(',').map(item => item.trim());
+const index = array.indexOf(elementToRemove);
+if (index !== -1) {
+array.splice(index, 1);
+document.getElementById("result").innerText = `Array after removal:
+[${array.join(', ')}]`;
+} else {
+document.getElementById("result").innerText = "Element Not Found!";
+}
+}
