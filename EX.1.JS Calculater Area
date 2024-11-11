@@ -1,0 +1,75 @@
+//EXP-1
+
+#index.html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Area Calculator</title>
+<script src="script.js" defer></script>
+</head>
+<body>
+<h1>Area Calculator</h1>
+<h2>Triangle Area</h2>
+<label for="base">Base:</label>
+<input type="number" id="base" placeholder="Enter base">
+<label for="height">Height:</label>
+<input type="number" id="height" placeholder="Enter height">
+<button onclick="calculateTriangleArea()">Calculate Triangle
+Area</button>
+<p id="triangleResult"></p>
+<h2>Rectangle Area</h2>
+<label for="length">Length:</label>
+<input type="number" id="length" placeholder="Enter length">
+<label for="breadth">Breadth:</label>
+<input type="number" id="breadth" placeholder="Enter breadth">
+<button onclick="calculateRectangleArea()">Calculate Rectangle
+Area</button>
+<p id="rectangleResult"></p>
+<h2>Circle Area</h2>
+<label for="radius">Radius:</label>
+<input type="number" id="radius" placeholder="Enter radius">
+<button onclick="calculateCircleArea()">Calculate Circle Area</button>
+<p id="circleResult"></p>
+</body>
+</html>
+
+#script.js
+
+function calculateTriangleArea() {
+let base = parseFloat(document.getElementById('base').value);
+let height = parseFloat(document.getElementById('height').value);
+if (isNaN(base) || isNaN(height) || base <= 0 || height <= 0) {
+document.getElementById('triangleResult').textContent = "Please
+enter valid positive numbers.";
+return;
+}
+let area = 0.5 * base * height;
+document.getElementById('triangleResult').textContent = "Area of
+Triangle: " + area.toFixed(2);
+}
+function calculateRectangleArea() {
+let length = parseFloat(document.getElementById('length').value);
+let breadth = parseFloat(document.getElementById('breadth').value);
+if (isNaN(length) || isNaN(breadth) || length <= 0 || breadth <= 0) {
+document.getElementById('rectangleResult').textContent = "Please
+enter valid positive numbers.";
+return;
+}
+let area = length * breadth;
+document.getElementById('rectangleResult').textContent = "Area of
+Rectangle: " + area.toFixed(2);
+}
+function calculateCircleArea() {
+let radius = parseFloat(document.getElementById('radius').value);
+if (isNaN(radius) || radius <= 0) {
+document.getElementById('circleResult').textContent = "Please enter
+a valid positive number.";
+return;
+}
+let area = 3.14 * radius * radius;
+document.getElementById('circleResult').textContent = "Area of Circle:
+" + area.toFixed(2);
+}
